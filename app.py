@@ -18,5 +18,4 @@ print(f'Найдено {len(faces)} лиц на изображении')
 for (x, y, w, h) in faces:
     cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)
 
-# Сохраняем результат(опционально)
 cv2.imwrite('result.jpg', img)

@@ -3,16 +3,11 @@ name: Build and Push Docker Image
 on:
   push:
     branches:
-      - main
-    paths:
-      - '**.py'
-      - 'Dockerfile'
-      - 'requirements.txt'
-      - 'photos/img.png'
+      - master
+
   pull_request:
     branches:
-      - main
-
+      – master
 jobs:
   build:
     runs-on: ubuntu-latest
