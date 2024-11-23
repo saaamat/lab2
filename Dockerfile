@@ -2,16 +2,15 @@ FROM python:3.11-slim
 
 RUN apt-get update && \
     apt-get install -y \
-    libsm6 \
-    libxext6 \
-    libxrender-dev && \
-    pip install --no-cache-dir opencv-python
+    libopencv-dev \
+    && rm -rf /var/lib/apt/lists/*
 
+COPY requirements.txt /app/requirements.txt
 WORKDIR /app
+RUN pip install --no-cache-dir -r requirements.txt
 
-COPY requirements.txt requirements.txt
-RUN pip install -r requirements.txt
+COPY app.py /app/app.py
+COPY photos /app/photos
 
-COPY .  .
-
-CMD ["python", "app.py"]
+# Запускаем приложение
+CMD ["python", "app.py", "/app/photos/img.png"]
